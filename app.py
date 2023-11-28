@@ -1,45 +1,35 @@
 from flask import Flask, render_template, request
-import pickle
+import joblib
 import pandas as pd
-
-clf = pickle.load(open('diabetes.pkl', 'rb'))
 
 app = Flask(__name__)
 
-@app.route('/')
-def home():
-    return render_template('index.html')
+clf = joblib.load('diabetes.pkl')
+scaler = joblib.load('scaler.pkl')
 
-@app.route('/predict', methods=['POST'])
+@app.route('/', methods=['GET', 'POST'])
 def predict():
+    prediction = None
 
-    if request.method == "POST":
-        gender = request.form['gender']
-        age = request.form['age']
-        hypertension = request.form['hypertension']
-        heart_disease = request.form['heart_disease']
-        smoking_history = request.form['smoking_history']
-        bmi = request.form['bmi']
-        HbA1c_level = request.form['HbA1c_level']
-        blood_glucose_level = request.form['blood_glucose_level']
-
-        # user_input = [gender, age, heart_disease, smoking_history, bmi, HbA1c_level, blood_glucose_level]
-
+    if request.method == 'POST':
         user_data = pd.DataFrame(columns=['gender', 'age', 'hypertension',
-                                        'heart_disease', 'smoking_history', 'bmi',
-                                        'HbA1c_level', 'blood_glucose_level'])
+                                          'heart_disease', 'smoking_history', 'bmi',
+                                          'HbA1c_level', 'blood_glucose_level'])
 
-        user_data['gender'] = gender
-        user_data['age'] = age
-        user_data['hypertension'] = hypertension
-        user_data['heart_disease'] = heart_disease
-        user_data['smoking_history'] = smoking_history
-        user_data['bmi'] = bmi
-        user_data['HbA1c_level'] = HbA1c_level
-        user_data['blood_glucose_level'] = blood_glucose_level
-        
-        # pred = clf.predict(user_data)
-        return user_data
+        for column in user_data.columns:
+            user_input = request.form.get(column)
+            user_data.at[0, column] = float(user_input)
+
+        user_data = user_data.apply(pd.to_numeric, errors='coerce')
+
+        # Normalize the user data using the fitted scaler
+        user_data_scaled_array = scaler.transform(user_data.values.reshape(1, -1))
+
+        user_prediction = clf.predict(user_data_scaled_array)
+        prediction = 'Diabetes' if user_prediction[0] == 1 else 'Not Diabetes'
+
+    return render_template('index.html', prediction=prediction)
+
 
 if __name__ == "__main__":
     app.run(debug=True)

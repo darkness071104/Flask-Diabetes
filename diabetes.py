@@ -4,7 +4,7 @@ from sklearn.model_selection import train_test_split # Import train_test_split f
 from sklearn import metrics #Import scikit-learn metrics module for accuracy calculation
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.impute import SimpleImputer
-import pickle
+import joblib
 
 diabetes = pd.read_csv('diabetes_prediction_dataset.csv')
 
@@ -64,6 +64,13 @@ clf = DecisionTreeClassifier(criterion="entropy", max_depth=2)
 # Train Decision Tree Classifer
 clf = clf.fit(X_train, y_train)
 
+# #Predict the response for test dataset
+# y_pred = clf.predict(X_test)
+
+# # Model Accuracy, how often is the classifier correct?
+# print("Accuracy:", metrics.accuracy_score(y_test, y_pred))
+
 
 # Import 
-pickle.dump(clf, open('diabetes.pkl', 'wb'))
+joblib.dump(clf, 'diabetes.pkl')
+joblib.dump(scaler, 'scaler.pkl')
