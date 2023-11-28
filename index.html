@@ -1,0 +1,208 @@
+<!------ Include the above in your HEAD tag ---------->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+      rel="stylesheet"
+      id="bootstrap-css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container contact-form">
+      <div class="contact-image">
+        <img
+          src="https://image.ibb.co/kUagtU/rocket_contact.png"
+          alt="rocket_contact"
+        />
+      </div>
+      <form method="post">
+        <h3>Drop Us a Message</h3>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="gender">Gender</label>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="gender"
+                  id="gender1"
+                  value="1"
+                />
+                <label class="form-check-label" for="gender1"> Male </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="gender"
+                  id="gender2"
+                  value="0"
+                />
+                <label class="form-check-label" for="gender2"> Female </label>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="age">Age</label>
+              <input
+                type="number"
+                name="age"
+                class="form-control"
+                placeholder="Age"
+                min="0"
+                max="80"
+              />
+            </div>
+            <div class="form-group">
+              <label for="hypertension">Do you have hypertension?</label>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="hypertension"
+                  id="hypertension1"
+                  value="1"
+                />
+                <label class="form-check-label" for="hypertension1">
+                  Yes
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="hypertension"
+                  id="hypertension2"
+                  value="0"
+                />
+                <label class="form-check-label" for="hypertension2"> No </label>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="heart_disease">Do you have heart disease?</label>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="heart_disease"
+                  id="heart_disease1"
+                  value="1"
+                />
+                <label class="form-check-label" for="heart_disease1">
+                  Yes
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="heart_disease"
+                  id="heart_disease2"
+                  value="0"
+                />
+                <label class="form-check-label" for="heart_disease2">
+                  No
+                </label>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="smoking_history">Do you smoke?</label>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="smoking_history"
+                  id="smoking_history2"
+                  value="0"
+                />
+                <label class="form-check-label" for="smoking_history2">
+                  No
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="smoking_history"
+                  id="smoking_history1"
+                  value="1"
+                />
+                <label class="form-check-label" for="smoking_history1">
+                  Former/Ever
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="smoking_history"
+                  id="smoking_history3"
+                  value="2"
+                />
+                <label class="form-check-label" for="smoking_history3">
+                  Yes
+                </label>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="bmi">BMI</label>
+              <input
+                type="number"
+                name="bmi"
+                class="form-control"
+                placeholder="BMI"
+                min="10"
+                max="96"
+                step="0.01"
+              />
+            </div>
+            <div class="form-group">
+              <label for="HbA1c_level">HbA1c Level</label>
+              <input
+                type="number"
+                name="HbA1c_level"
+                class="form-control"
+                placeholder="HbA1c Level"
+                min="3.5"
+                max="9"
+                step="0.01"
+              />
+            </div>
+            <div class="form-group">
+              <label for="blood_glucose_level">Blood Glucose Level</label>
+              <input
+                type="number"
+                name="blood_glucose_level"
+                class="form-control"
+                placeholder="Blood Glucose Level"
+                min="80"
+                max="300"
+                step="0.01"
+              />
+            </div>
+            <div class="form-group">
+              <input
+                type="submit"
+                name="submit"
+                class="btn submit"
+                value="Predict"
+              />
+            </div>
+          </div>
+          <div class="col-md-6">
+            <p>Your prediction is :</p>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  </body>
+</html>
