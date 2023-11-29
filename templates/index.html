@@ -190,7 +190,8 @@
 							<input type="submit" name="submit" class="btn submit" value="Predict" />
 						</div>
 					</div>
-					<div class="col-md-6">
+
+					<div class="col-md-6" id="predictionResult">
 						{% if prediction %}
 						<p>Prediction Result:</p>
 						<p><b>{{ prediction }}</b></p>
@@ -202,5 +203,14 @@
 
 		<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script>
+			// Check if the page is loaded for the first time
+			if (performance.navigation.type == 1) {
+				// Reset prediction result on page load
+				$(document).ready(function () {
+					$("#predictionResult").empty();
+				});
+			}
+		</script>
 	</body>
 </html>
