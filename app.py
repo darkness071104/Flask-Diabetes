@@ -22,7 +22,7 @@ def predict():
 
         user_data = user_data.apply(pd.to_numeric, errors='coerce')
 
-        # Normalize the user data using the fitted scaler
+        # Normalize User Input
         user_data_scaled_array = scaler.transform(user_data.values.reshape(1, -1))
 
         user_prediction = clf.predict(user_data_scaled_array)
